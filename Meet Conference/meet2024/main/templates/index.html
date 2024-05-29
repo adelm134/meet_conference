@@ -18,24 +18,14 @@
         }
 
         .slick-slider {
-            width: 100%; /* Полная ширина */
-            height: 100vh; /* Полная высота экрана */
-        }
-
-        .intro-slider .slick-slide img,
-        .gallery-slider .slick-slide img {
-        transition: transform 0.3s;
-        }
-
-        .intro-slider .slick-center img,
-        .gallery-slider .slick-center img {
-        transform: scale(1.2); /* Увеличение центрального слайда */
+            width: 100%;
+            height: 100vh;
         }
 
         .slick-slide img {
             width: 100%;
-            height: 100vh; /* Полная высота экрана */
-            object-fit: cover; /* Покрытие всего слайда */
+            height: 100vh;
+            object-fit: cover;
         }
 
         .intro-section {
@@ -54,12 +44,16 @@
             color: white;
         }
 
+        .intro-slider .slick-slide img {
+            height: auto;
+        }
+
         .gallery-slider {
             width: 100%;
         }
 
         .gallery-slider .slick-slide {
-            padding: 0 10px; /* Отступы между слайдами */
+            padding: 0 10px;
         }
 
         .gallery-slider .slick-slide img {
@@ -67,27 +61,27 @@
         }
 
         .gallery-slider .slick-center img {
-            transform: scale(1.2); /* Увеличение центрального слайда */
+            transform: scale(1.2);
         }
 
         .slick-prev, .slick-next {
-            font-size: 0; /* Скрытие текста на кнопках */
-            background: transparent; /* Прозрачный фон */
-            border: none; /* Удаление границ */
-            position: absolute; /* Абсолютное позиционирование */
-            top: 50%; /* Положение по вертикали */
-            transform: translateY(-50%); /* Смещение на 50% вверх */
-            z-index: 1; /* Перекрытие */
-            cursor: pointer; /* Показ курсора */
-            color: white; /* Белый цвет стрелок */
+            font-size: 0;
+            background: transparent;
+            border: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            cursor: pointer;
+            color: white;
         }
 
         .slick-prev {
-            left: 10px; /* Положение левой кнопки */
+            left: 10px;
         }
 
         .slick-next {
-            right: 10px; /* Положение правой кнопки */
+            right: 10px;
         }
     </style>
 </head>
@@ -178,7 +172,7 @@
                         <a href="#slider" class="nav-link text-white">Gallery</a>
                         <a href="#program" class="nav-link text-white">Program</a>
                     </nav>
-                    <button class="btn btn-danger mt-2">Participate</button>
+                    <a href="#registration" class="btn btn-primary">Register Now</a>
                     <div class="social-icons mt-2">
                         <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
                         <a href="#" class="text-dark"><i class="fa fa-facebook"></i></a>
@@ -189,9 +183,9 @@
             </div>
         </div>
         <div class="mt-3">
-            <select class="custom-select w-auto">
-                <option selected>Русский</option>
-                <option value="1">English</option>
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
             </select>
         </div>
     </footer>
@@ -212,7 +206,7 @@
                 prevArrow: '<button type="button" class="slick-prev">&#10094;</button>',
                 nextArrow: '<button type="button" class="slick-next">&#10095;</button>'
             });
-
+    
             $('.gallery-slider').slick({
                 dots: true,
                 infinite: true,
@@ -247,8 +241,18 @@
                 }
             ]
         });
+    
+        document.getElementById('language-select').addEventListener('change', function() {
+            var selectedLanguage = this.value;
+            if (selectedLanguage === 'en') {
+                window.location.href = '#index.html'; // замените на URL вашей английской версии
+            } else if (selectedLanguage === 'ru') {
+                window.location.href = '#russian.html'; // замените на URL вашей русской версии
+            }
+        });
     });
-</script>
+    
+    </script>
 </body>
 </html>
 ```
