@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
-from .models import Gallery
+from .models import Gallery, SliderImage, IntroductionImage
 
 def index(request):
     form = RegistrationForm()
@@ -10,8 +10,12 @@ def index(request):
             form.save()
             return redirect('index')
     gallery = Gallery.objects.all()
+    slider_images = SliderImage.objects.all()
+    introduction_images = IntroductionImage.objects.all()
     context = {
         'form': form,
         'gallery': gallery,
+        'slider_images': slider_images,
+        'introduction_images': introduction_images,
     }
     return render(request, 'index.html', context)

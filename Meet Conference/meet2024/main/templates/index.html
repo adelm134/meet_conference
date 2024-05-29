@@ -1,4 +1,3 @@
-<!-- templates/main/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +7,66 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'main/styles.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <style>
+        .slick-slider {
+            width: 60%; /* Ширина слайдера */
+            margin: 0 auto; /* Центрирование слайдера */
+        }
+
+        .slick-slide {
+            margin: 0 1px; /* Отступы между слайдами */
+        }
+
+        .slick-slide img {
+            width: 100%; /* 100% ширина изображений внутри слайдов */
+        }
+
+        .slick-prev, .slick-next {
+            font-size: 0; /* Скрытие текста на кнопках */
+            background: transparent; /* Прозрачный фон */
+            border: none; /* Удаление границ */
+            position: absolute; /* Абсолютное позиционирование */
+            top: 50%; /* Положение по вертикали */
+            transform: translateY(-50%); /* Смещение на 50% вверх */
+            z-index: 1; /* Перекрытие */
+            cursor: pointer; /* Показ курсора */
+        }
+
+        .slick-prev {
+            left: 10px; /* Положение левой кнопки */
+        }
+
+        .slick-next {
+            right: 10px; /* Положение правой кнопки */
+        }
+    </style>
 </head>
 <body>
     <header class="bg-primary text-white text-center py-3">
         <h1>MEET 2024</h1>
         <nav class="nav justify-content-center">
-            <a href="#introduction" class="nav-link text-white">Главная</a>
-            <a href="#registration" class="nav-link text-white">Регистрация</a>
-            <a href="#gallery" class="nav-link text-white">Галерея</a>
-            <a href="#program" class="nav-link text-white">Программа</a>
+            <a href="#introduction" class="nav-link text-white">Home</a>
+            <a href="#registration" class="nav-link text-white">Register</a>
+            <a href="#gallery" class="nav-link text-white">Gallery</a>
+            <a href="#program" class="nav-link text-white">Program</a>
         </nav>
     </header>
 
     <section id="introduction" class="container mt-4">
         <div class="text-center">
             <h2>MEET 2024</h2>
-            <p>Добро пожаловать на конференцию Medicine Engineering Education Technology!</p>
-            <a href="#registration" class="btn btn-primary">Зарегистрироваться</a>
+            <p>Welcome to the Medicine Engineering Education Technology conference!</p>
+            <a href="#registration" class="btn btn-primary">Register Now</a>
+        </div>
+        <div class="slider mt-4">
+            {% for image in introduction_images %}
+            <div>
+                <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid">
+                <p>{{ image.caption }}</p>
+            </div>
+            {% endfor %}
         </div>
         <div class="row mt-5">
             <div class="col-md-3">
@@ -60,25 +102,19 @@
         </form>
     </section>
 
-    <section id="gallery" class="container mt-4">
-        <h2>Галерея</h2>
-        <div class="row">
-            {% for image in gallery %}
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ image.title }}</h5>
-                        <p class="card-text">{{ image.description }}</p>
-                    </div>
-                </div>
+    <section id="slider" class="container mt-4">
+        <h2>Slider</h2>
+        <div class="slider">
+            {% for image in slider_images %}
+            <div>
+                <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid">
+                <p>{{ image.caption }}</p>
             </div>
             {% endfor %}
         </div>
     </section>
 
-     <!-- Footer Section -->
-     <footer class="bg-light text-center py-4">
+    <footer class="bg-light text-center py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
@@ -109,4 +145,46 @@
             </select>
         </div>
     </footer>
-    <!-- End Footer Section -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: true, // Центрирование слайдов
+                variableWidth: true, // Различная ширина слайдов
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>
