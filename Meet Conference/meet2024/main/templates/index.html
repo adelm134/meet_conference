@@ -10,17 +10,64 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <style>
-        .slick-slider {
-            width: 60%; /* Ширина слайдера */
-            margin: 0 auto; /* Центрирование слайдера */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        .slick-slide {
-            margin: 0 1px; /* Отступы между слайдами */
+        .slick-slider {
+            width: 100%; /* Полная ширина */
+            height: 100vh; /* Полная высота экрана */
+        }
+
+        .intro-slider .slick-slide img,
+        .gallery-slider .slick-slide img {
+        transition: transform 0.3s;
+        }
+
+        .intro-slider .slick-center img,
+        .gallery-slider .slick-center img {
+        transform: scale(1.2); /* Увеличение центрального слайда */
         }
 
         .slick-slide img {
-            width: 100%; /* 100% ширина изображений внутри слайдов */
+            width: 100%;
+            height: 100vh; /* Полная высота экрана */
+            object-fit: cover; /* Покрытие всего слайда */
+        }
+
+        .intro-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .intro-section .intro-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .gallery-slider {
+            width: 100%;
+        }
+
+        .gallery-slider .slick-slide {
+            padding: 0 10px; /* Отступы между слайдами */
+        }
+
+        .gallery-slider .slick-slide img {
+            transition: transform 0.3s;
+        }
+
+        .gallery-slider .slick-center img {
+            transform: scale(1.2); /* Увеличение центрального слайда */
         }
 
         .slick-prev, .slick-next {
@@ -32,6 +79,7 @@
             transform: translateY(-50%); /* Смещение на 50% вверх */
             z-index: 1; /* Перекрытие */
             cursor: pointer; /* Показ курсора */
+            color: white; /* Белый цвет стрелок */
         }
 
         .slick-prev {
@@ -49,62 +97,64 @@
         <nav class="nav justify-content-center">
             <a href="#introduction" class="nav-link text-white">Home</a>
             <a href="#registration" class="nav-link text-white">Register</a>
-            <a href="#gallery" class="nav-link text-white">Gallery</a>
+            <a href="#slider" class="nav-link text-white">Gallery</a>
             <a href="#program" class="nav-link text-white">Program</a>
         </nav>
     </header>
 
-    <section id="introduction" class="container mt-4">
-        <div class="text-center">
+    <section id="introduction" class="intro-section">
+        <div class="intro-slider">
+            {% for image in introduction_images %}
+            <div>
+                <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="intro-content">
             <h2>MEET 2024</h2>
             <p>Welcome to the Medicine Engineering Education Technology conference!</p>
             <a href="#registration" class="btn btn-primary">Register Now</a>
         </div>
-        <div class="slider mt-4">
-            {% for image in introduction_images %}
-            <div>
-                <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid">
-                <p>{{ image.caption }}</p>
-            </div>
-            {% endfor %}
-        </div>
+    </section>
+
+    <section id="program" class="container mt-4">
         <div class="row mt-5">
             <div class="col-md-3">
                 <h3>MEET STUDENTS</h3>
-                <p>Подробности о студенческих мероприятиях.</p>
+                <p>Details about student activities.</p>
             </div>
             <div class="col-md-3">
                 <h3>MEET EXPO</h3>
-                <p>Подробности о выставке.</p>
+                <p>Details about the expo.</p>
             </div>
             <div class="col-md-3">
                 <h3>MEET TALKING</h3>
-                <p>Подробности о выступлениях.</p>
+                <p>Details about talks.</p>
             </div>
             <div class="col-md-3">
                 <h3>MEET SCIENCE</h3>
-                <p>Подробности о научных сессиях.</p>
+                <p>Details about scientific sessions.</p>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col-md-12 text-center">
-                <a href="../../static/program.pdf" class="btn btn-primary">Посмотреть программу</a>
+                <a href="../../static/program.pdf" class="btn btn-primary">View Program</a>
             </div>
         </div>
     </section>
 
     <section id="registration" class="container mt-4">
-        <h2>Регистрация на MEET 2024</h2>
+        <h2>Register for MEET 2024</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </section>
 
-    <section id="slider" class="container mt-4">
+    <section id="slider" class="container-fluid mt-4">
         <h2>Slider</h2>
-        <div class="slider">
+        <div class="gallery-slider">
             {% for image in slider_images %}
             <div>
                 <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid">
@@ -123,12 +173,12 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <nav class="nav justify-content-center">
-                        <a href="#" class="nav-link">Главная</a>
-                        <a href="#" class="nav-link">Мероприятия</a>
-                        <a href="#" class="nav-link">Программа</a>
-                        <a href="#" class="nav-link">Галерея</a>
+                        <a href="#introduction" class="nav-link text-white">Home</a>
+                        <a href="#registration" class="nav-link text-white">Register</a>
+                        <a href="#slider" class="nav-link text-white">Gallery</a>
+                        <a href="#program" class="nav-link text-white">Program</a>
                     </nav>
-                    <button class="btn btn-danger mt-2">Принять участие</button>
+                    <button class="btn btn-danger mt-2">Participate</button>
                     <div class="social-icons mt-2">
                         <a href="#" class="text-dark"><i class="fa fa-instagram"></i></a>
                         <a href="#" class="text-dark"><i class="fa fa-facebook"></i></a>
@@ -150,41 +200,55 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.slider').slick({
+            $('.intro-slider').slick({
+                dots: false,
+                arrows: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear',
+                autoplay: true,
+                autoplaySpeed: 3000,
+                prevArrow: '<button type="button" class="slick-prev">&#10094;</button>',
+                nextArrow: '<button type="button" class="slick-next">&#10095;</button>'
+            });
+
+            $('.gallery-slider').slick({
                 dots: true,
                 infinite: true,
                 speed: 300,
                 slidesToShow: 3,
                 slidesToScroll: 1,
-                centerMode: true, // Центрирование слайдов
-                variableWidth: true, // Различная ширина слайдов
+                centerMode: true,
+                variableWidth: true,
                 responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
                     }
-                ]
-            });
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
         });
-    </script>
+    });
+</script>
 </body>
 </html>
+```
