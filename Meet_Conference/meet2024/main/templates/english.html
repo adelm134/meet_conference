@@ -85,12 +85,12 @@
         <nav class="nav d-flex justify-content-around">
             <img src="{% static 'meetlogo.png' %}">
             <div class="d-flex justify-content-center">
-                <a href="#introduction" class="nav-link text-dark">Главная</a>
-                <a href="#program" class="nav-link text-dark">Программа</a>
-                <a href="#slider" class="nav-link text-dark">Галерея</a>
-                <a href="#contacts" class="nav-link text-dark">Контакты</a>
+                <a href="#introduction" class="nav-link text-dark">Home</a>
+                <a href="#program" class="nav-link text-dark">Program</a>
+                <a href="#slider" class="nav-link text-dark">Gallery</a>
+                <a href="#contacts" class="nav-link text-dark">Contacts</a>
             </div>
-            <a href="#registration" class="btn btn-danger">Принять участие</a>
+            <a href="#registration" class="btn btn-danger">Participate</a>
         </nav>
     </header>
 
@@ -106,11 +106,11 @@
             <h1 class="font-weight-bold">MEET 2024</h1>
             <h4 class="font-weight-normal">Medicine Engineering Education Technology</h4>
             <br>
-            <a href="#registration" class="btn btn-outline-warning">Зарегистрироваться</a>
+            <a href="#registration" class="btn btn-outline-warning">Register</a>
         </div>
     </section>
 
-    <h1 class="text-center">Вас ждет</h1>
+    <h1 class="text-center">Is waiting for you</h1>
     <section id="program" class="container">
         <div class="container mt-5">
             <div class="row">
@@ -119,7 +119,7 @@
                         <br>
                         <br>
                         <h3>MEET.STUDENTS</h3>
-                        <p>Специальная конференция для студентов, на которой они могут продемонстрировать свои исследования, инновации и идеи в области медицины, инженерии, образования и технологий.</p>
+                        <p>A dedicated conference for students to showcase their research, innovation and ideas in the fields of medicine, engineering, education and technology.</p>
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -127,7 +127,7 @@
                         <br>
                         <br>
                         <h3>MEET.EXPO</h3>
-                        <p>Выставка, демонстрирующая инновационные проекты, продукты и услуги в области медицины, инженерии, образования и технологий, предоставляющая участникам возможность получить практический опыт и наладить контакты.</p>
+                        <p>An exhibition showcasing innovative projects, products and services in the fields of medicine, engineering, education and technology, providing participants with the opportunity to gain hands-on experience and network.</p>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -135,7 +135,7 @@
                         <br>
                         <br>
                         <h3>MEET.TALKING</h3>
-                        <p>Увлекательная сессия в формате Science Slam неакадемической форме научной коммуникации - это соревнование в виде коротких выступлений ученых с рассказами о своих научных исследованиях в научно-популярной форме на интересные научные темы, созданные в том числе и использованием искусственного интеллекта.</p>
+                        <p>An exciting session in the Science Slam format, a non-academic form of scientific communication, is a competition in the form of short speeches by scientists with stories about their scientific research in popular science form on interesting scientific topics, including the use of artificial intelligence.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -143,7 +143,7 @@
                         <br>
                         <br>
                         <h3>MEET.SCIENCE</h3>
-                        <p>Научная конференция с презентациями, семинарами и дискуссиями о передовых исследованиях и разработках в различных областях.</p>
+                        <p>A scientific conference with presentations, workshops and discussions on cutting-edge research and development in various fields.</p>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -152,11 +152,11 @@
                             <br>
                             <br>
                             <h3>MEET.AWARDS</h3>
-                            <p>Церемония награждения, где участники смогут оценить и выбрать понравившиеся работы. Каждый участник сможет голосовать за представленные исследования, инновации и проекты в области медицины, инженерии, образования и технологий. Работа, набравшая наибольшее количество голосов, получит приз и особое признание на конференции.</p>
+                            <p>An awards ceremony where participants will be able to evaluate and select their favorite works. Each participant will be able to vote for submitted research, innovation and projects in the fields of medicine, engineering, education and technology. The work with the most votes will receive a prize and special recognition at the conference.</p>
                         </div>
                         <div class="row mt-5">
                             <div class="col-md-12 text-center">
-                                <a href="../../static/program.pdf" class="btn btn-outline-light">Получить программу</a>
+                                <a href="../../static/program.pdf" class="btn btn-outline-light">Get program</a>
                             </div>
                         </div>
                     </div>
@@ -166,13 +166,13 @@
     </section>
 
     <section id="registration" class="container form-container">
-        <h2>Примите участие</h2>
+        <h2>Take part</h2>
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.as_p }}
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn btn-primary">Send</button>
         </form>
     </section>
 
@@ -199,13 +199,13 @@
                         </div>
                     </div>
                     <div class="row text-center">
-                        <a href="#introduction" class="nav-link text-dark">Главная</a>
-                        <a href="#program" class="nav-link text-dark">Программа</a>
-                        <a href="#slider" class="nav-link text-dark">Галерея</a>
-                        <a href="#contacts" class="nav-link text-dark">Контакты</a>
+                        <a href="#introduction" class="nav-link text-dark">Home</a>
+                        <a href="#program" class="nav-link text-dark">Program</a>
+                        <a href="#slider" class="nav-link text-dark">Gallery</a>
+                        <a href="#contacts" class="nav-link text-dark">Contacts</a>
                     </div>
                     <div class="text-right">
-                        <a href="#registration" class="btn btn-danger">Мы вас ждем!</a>
+                        <a href="#registration" class="btn btn-danger">We are waiting for you!</a>
                         <div class="social-icons mt-2">
                             <a href="https://www.instagram.com/alatoo.edu.kg/" class="text-dark"><i class="fa fa-instagram"><img src="{% static 'instagram.png' %}" alt="Ig Logo"></i></a>
                             <a href="https://www.facebook.com/AlaTooInternationalUniversity/" class="text-dark"><i class="fa fa-facebook"><img src="{% static 'Facebook.png' %}" alt="Fb Logo"></i></a>
@@ -216,9 +216,9 @@
                 </div>
                 <div class="container">
                     <div class="row text-center mt-4">
-                        <a href="{% url 'english' %}" class="btn btn-primary">English</a>
+                        <a href="{% url 'index' %}" class="btn btn-primary">Русский</a>
                     </div>
-                </div>
+            </div>
             <p class="text-center">© 2024 Ala-Too International University</p>
         </footer>
     </section>
