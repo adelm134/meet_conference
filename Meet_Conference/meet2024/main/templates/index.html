@@ -188,40 +188,43 @@
     </section>
 
     <section id="contacts">
-        <footer class="bg-light py-4">
+        <footer class="bg-light py-3">
             <div class="container">
-                <div class="row d-flex justify-content-around">
-                    <div class="text-left">
-                        <img src="{% static 'black.png' %}" alt="MEET 2024 Logo" class="mb-2">
-                        <div>
-                            <img src="{% static 'uni1.png' %}" alt="Uni Logo">
+                <div class="row d-flex justify-content-around align-items-center">
+                    <div class="col-md-3 text-center mb-3 mb-md-0 d-flex flex-column align-items-center">
+                        <div class="mb-4"></div> <!-- Increased Spacer -->
+                        <img src="{% static 'black.png' %}" alt="MEET 2024 Logo" class="mb-3">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="{% static 'uni1.png' %}" alt="Uni Logo" class="mb-3">
                             <img src="{% static 'uni2.png' %}" alt="Acad Logo">
                         </div>
                     </div>
-                    <div class="row text-center">
-                        <a href="#introduction" class="nav-link text-dark">Главная</a>
-                        <a href="#program" class="nav-link text-dark">Программа</a>
-                        <a href="#slider" class="nav-link text-dark">Галерея</a>
-                        <a href="#contacts" class="nav-link text-dark">Контакты</a>
+                    <div class="col-md-6 text-center mb-3 mb-md-0">
+                        <div class="row justify-content-center">
+                            <a href="#introduction" class="nav-link text-dark col-6 col-md-3">Главная</a>
+                            <a href="#program" class="nav-link text-dark col-6 col-md-3">Программа</a>
+                            <a href="#slider" class="nav-link text-dark col-6 col-md-3">Галерея</a>
+                            <a href="#contacts" class="nav-link text-dark col-6 col-md-3">Контакты</a>
+                        </div>
                     </div>
-                    <div class="text-right">
-                        <a href="#registration" class="btn btn-danger">Мы вас ждем!</a>
-                        <div class="social-icons mt-2">
-                            <a href="https://www.instagram.com/alatoo.edu.kg/" class="text-dark"><i class="fa fa-instagram"><img src="{% static 'instagram.png' %}" alt="Ig Logo"></i></a>
-                            <a href="https://www.facebook.com/AlaTooInternationalUniversity/" class="text-dark"><i class="fa fa-facebook"><img src="{% static 'Facebook.png' %}" alt="Fb Logo"></i></a>
-                            <a href="#" class="text-dark"><i class="fa fa-telegram"><img src="{% static 'Telegram.png' %}" alt="Tg Logo"></i></a>
-                            <a href="https://www.youtube.com/@aiutv9125" class="text-dark"><i class="fa fa-youtube"><img src="{% static 'Youtube.png' %}" alt="Yt Logo"></i></a>
+                    <div class="col-md-3 text-center mb-3 mb-md-0 d-flex flex-column align-items-center">
+                        <a href="#registration" class="btn btn-danger mb-2">Мы вас ждем!</a>
+                        <div class="social-icons mt-2 d-flex justify-content-center">
+                            <a href="https://www.instagram.com/alatoo.edu.kg/" class="text-dark mx-1"><img src="{% static 'instagram.png' %}" alt="Ig Logo"></a>
+                            <a href="https://www.facebook.com/AlaTooInternationalUniversity/" class="text-dark mx-1"><img src="{% static 'Facebook.png' %}" alt="Fb Logo"></a>
+                            <a href="#" class="text-dark mx-1"><img src="{% static 'Telegram.png' %}" alt="Tg Logo"></a>
+                            <a href="https://www.youtube.com/@aiutv9125" class="text-dark mx-1"><img src="{% static 'Youtube.png' %}" alt="Yt Logo"></a>
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row text-center mt-4">
-                        <a href="{% url 'english' %}" class="btn btn-primary">English</a>
-                    </div>
+                <div class="row text-center mt-3">
+                    <a href="{% url 'english' %}" class="btn btn-primary mx-auto">English</a>
                 </div>
-            <p class="text-center">© 2024 Ala-Too International University</p>
+                <p class="text-center mt-3 mb-0">© 2024 Ala-Too International University</p>
+            </div>
         </footer>
     </section>
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>

@@ -170,3 +170,35 @@ footer {
     margin-top: 100px;
 }
 
+footer .social-icons a {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+footer .social-icons a img {
+    width: 100%;
+    height: auto;
+}
+
+footer .btn-danger {
+    margin-bottom: 10px;
+}
+
+footer .row {
+    margin-bottom: 0;
+}
+
+footer .d-flex.flex-column.align-items-center img {
+    margin-bottom: 15px;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    margin: 0 5px;
+}
+
+
