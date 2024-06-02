@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEET 2024</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .slick-slider {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slick-slide img {
+            width: 100%;
+            height: 50vh;
+            object-fit: cover;
+            border-radius: 1opx;
+        }
+
+        .intro-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .intro-section .intro-content {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: left;
+            color: white;
+        }
+
+        .intro-slider .slick-slide img {
+            height: auto;
+        }
+
+        .gallery-slider {
+            width: 100%;
+            height: 50vh;
+        }
+
+        .gallery-slider .slick-slide {
+            padding: 0 20px;
+        }
+
+        .gallery-slider .slick-slide img {
+            transition: transform 0.3s;
+        }
+
+        .gallery-slider .slick-center img {
+            transform: scale(1.2);
+        }
+
+        .slick-prev, .slick-next {
+            font-size: 0;
+            background: transparent;
+            border: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            cursor: pointer;
+            color: white;
+        }
+
+        .slick-prev {
+            left: 10px;
+        }
+
+        .slick-next {
+            right: 10px;
+        }
+
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <header class="fixed-top bg-light text-dark text-center py-3">
+        <nav class="nav d-flex justify-content-around">
+            <img src="{% static 'meetlogo.png' %}">
+            <div class="d-flex justify-content-center">
+                <a href="#introduction" class="nav-link text-dark">Главная</a>
+                <a href="#program" class="nav-link text-dark">Программа</a>
+                <a href="#slider" class="nav-link text-dark">Галерея</a>
+                <a href="#contacts" class="nav-link text-dark">Контакты</a>
+            </div>
+            <a href="#registration" class="btn btn-danger">Принять участие</a>
+        </nav>
+    </header>
+
+    <section id="introduction" class="intro-section">
+        <div class="intro-slider">
+            {% for image in introduction_images %}
+            <div>
+                <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="intro-content">
+            <h1 class="font-weight-bold">MEET 2024</h1>
+            <h4 class="font-weight-normal">Medicine Engineering Education Technology</h4>
+            <br>
+            <a href="#registration" class="btn btn-outline-warning">Зарегистрироваться</a>
+        </div>
+    </section>
+
+    <h1 class="text-center">Вас ждет</h1>
+    <section id="program" class="container">
+        <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="card meet-students p-3">
+                            <br>
+                            <br>
+                            <h3>MEET.STUDENTS</h3>
+                            <p>Специальная конференция для студентов, на которой они могут продемонстрировать свои исследования, инновации и идеи в области медицины, инженерии, образования и технологий.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card meet-expo p-3">
+                            <br>
+                            <br>
+                            <h3>MEET.EXPO</h3>
+                            <p>Выставка, демонстрирующая инновационные проекты, продукты и услуги в области медицины, инженерии, образования и технологий, предоставляющая участникам возможность получить практический опыт и наладить контакты.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card meet-talking p-3">
+                            <br>
+                            <br>
+                            <h3>MEET.TALKING</h3>
+                            <p>Увлекательная сессия в формате Science Slam неакадемической форме научной коммуникации - это соревнование в виде коротких выступлений ученых с рассказами о своих научных исследованиях в научно-популярной форме на интересные научные темы, созданные в том числе и использованием искусственного интеллекта.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card meet-science p-3">
+                            <br>
+                            <br>
+                            <h3>MEET.SCIENCE</h3>
+                            <p>Научная конференция с презентациями, семинарами и дискуссиями о передовых исследованиях и разработках в различных областях.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card meet-awards p-3 d-flex justify-content-between align-items-center">
+                            <div>
+                                <br>
+                                <br>
+                                <h3>MEET.AWARDS</h3>
+                                <p>Церемония награждения, где участники смогут оценить и выбрать понравившиеся работы. Каждый участник сможет голосовать за представленные исследования, инновации и проекты в области медицины, инженерии, образования и технологий. Работа, набравшая наибольшее количество голосов, получит приз и особое признание на конференции.</p>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-md-12 text-center">
+                                    <a href="../../static/program.pdf" class="btn btn-outline-light">Получить программу</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+                
+    </section>
+
+
+    
+    {% comment %} <section id="registration" class="container mt-4">
+        <h2>Register for MEET 2024</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+    </section> {% endcomment %}
+
+    <section id="registration" class="container form-container">
+        <h2>Примите участие</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+    </section>
+
+    
+    <section id="slider" class="container-fluid mt-4">
+        <div class="gallery-slider">
+            {% for image in slider_images %}
+            <div>
+                <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid">
+                <p>{{ image.caption }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="contacts">
+        <footer class="bg-light py-4">
+            <div class="container">
+                <div class="row d-flex justify-content-around">
+                    <div class="text-left">
+                        <img src="{% static 'black.png' %}" alt="MEET 2024 Logo" class="mb-2">
+                        <div>
+                            <img src="{% static 'uni1.png' %}" alt="Uni Logo">
+                            <img src="{% static 'uni2.png' %}" alt="Acad Logo">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <a href="#introduction" class="nav-link text-dark">Главная</a>
+                        <a href="#program" class="nav-link text-dark">Программа</a>
+                        <a href="#slider" class="nav-link text-dark">Галерея</a>
+                        <a href="#contacts" class="nav-link text-dark">Контакты</a>
+                    </div>
+                    <div class="text-right">
+                        <a href="#registration" class="btn btn-danger">Мы вас ждем!</a>
+                        <div class="social-icons mt-2">
+                            <a href="https://www.instagram.com/alatoo.edu.kg/" class="text-dark"><i class="fa fa-instagram"><img src="{% static 'instagram.png' %}" alt="Ig Logo"></i></a>
+                            <a href="https://www.facebook.com/AlaTooInternationalUniversity/" class="text-dark"><i class="fa fa-facebook"><img src="{% static 'Facebook.png' %}" alt="Fb Logo"></i></a>
+                            <a href="#" class="text-dark"><i class="fa fa-telegram"><img src="{% static 'Telegram.png' %}" alt="Tg Logo"></i></a>
+                            <a href="https://www.youtube.com/@aiutv9125" class="text-dark"><i class="fa fa-youtube"><img src="{% static 'Youtube.png' %}" alt="Yt Logo"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center">© 2024 Ala-Too International University</p>
+
+        </footer>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.intro-slider').slick({
+                dots: false,
+                arrows: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear',
+                autoplay: true,
+                autoplaySpeed: 3000,
+                prevArrow: '<button type="button" class="slick-prev">&#10094;</button>',
+                nextArrow: '<button type="button" class="slick-next">&#10095;</button>'
+            });
+    
+            $('.gallery-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: true,
+                variableWidth: true,
+                responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    
+    });
+    
+    </script>
+</body>
+</html>
+```

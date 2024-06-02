@@ -1,0 +1,14 @@
+django
+dj-database-url
+gunicorn
+tzdata
+pillow
+psycopg2-binary
+django-environ
+djangorestframework-simplejwt
+django-rest-swagger
+django-cors-headers
+django-admin-interface
+djangorestframework
+django-environ
+requests
