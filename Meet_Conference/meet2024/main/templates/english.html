@@ -174,7 +174,7 @@
                         </div>
                         <div class="row mt-5">
                             <div class="col-md-12 text-center">
-                                <a href="../../static/program.pdf" class="btn btn-outline-light">Получить программу</a>
+                                <a href="../../static/program.pdf" class="btn btn-outline-light">Get program</a>
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
     </section>
 
     <section id="registration" class="container form-container">
-        <h2>Примите участие</h2>
+        <h2>Take part</h2>
         <form method="post" id="registration-form">
             {% csrf_token %}
             <div class="form-group">
@@ -195,7 +195,7 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn btn-primary">Send</button>
         </form>
     </section>
 
@@ -241,7 +241,7 @@
                     </div>
                 </div>
                 <div class="row text-center mt-3">
-                    <a href="{% url 'english' %}" class="btn btn-primary mx-auto">Russian</a>
+                    <a href="{% url 'index' %}" class="btn btn-primary mx-auto">Russian</a>
                 </div>
                 <p class="text-center mt-3 mb-0">© 2024 Ala-Too International University</p>
             </div>
