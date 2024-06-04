@@ -78,6 +78,24 @@
             margin: 0;
             padding: 0;
         }
+        .form-container .form-group {
+            position: relative;
+        }
+        .form-container .form-group .form-error {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            color: red;
+            font-size: 0.8em;
+        }
+        .form-submit-animation {
+            animation: submitAnimation 0.3s ease-in-out;
+        }
+        @keyframes submitAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -156,7 +174,7 @@
                         </div>
                         <div class="row mt-5">
                             <div class="col-md-12 text-center">
-                                <a href="../../static/program.pdf" class="btn btn-outline-light">Get program</a>
+                                <a href="../../static/program.pdf" class="btn btn-outline-light">Получить программу</a>
                             </div>
                         </div>
                     </div>
@@ -166,13 +184,18 @@
     </section>
 
     <section id="registration" class="container form-container">
-        <h2>Take part</h2>
-        <form method="post">
+        <h2>Примите участие</h2>
+        <form method="post" id="registration-form">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.as_p }}
+                {% for field in form %}
+                    {% if field.errors %}
+                        <div class="form-error">{{ field.errors|striptags }}</div>
+                    {% endif %}
+                {% endfor %}
             </div>
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
     </section>
 
@@ -201,10 +224,10 @@
                     </div>
                     <div class="col-md-6 text-center mb-3 mb-md-0">
                         <div class="row justify-content-center">
-                            <a href="#introduction" class="nav-link text-dark col-6 col-md-3">Home</a>
-                            <a href="#program" class="nav-link text-dark col-6 col-md-3">Program</a>
-                            <a href="#slider" class="nav-link text-dark col-6 col-md-3">Gallery</a>
-                            <a href="#contacts" class="nav-link text-dark col-6 col-md-3">Contacts</a>
+                            <a href="#introduction" class="nav-link text-dark">Home</a>
+                            <a href="#program" class="nav-link text-dark">Program</a>
+                            <a href="#slider" class="nav-link text-dark">Gallery</a>
+                            <a href="#contacts" class="nav-link text-dark">Contacts</a>
                         </div>
                     </div>
                     <div class="col-md-3 text-center mb-3 mb-md-0 d-flex flex-column align-items-center">
@@ -218,7 +241,7 @@
                     </div>
                 </div>
                 <div class="row text-center mt-3">
-                    <a href="{% url 'index' %}" class="btn btn-primary mx-auto">Русский</a>
+                    <a href="{% url 'english' %}" class="btn btn-primary mx-auto">Russian</a>
                 </div>
                 <p class="text-center mt-3 mb-0">© 2024 Ala-Too International University</p>
             </div>
@@ -275,6 +298,10 @@
                         }
                     }
                 ]
+            });
+
+            $('#registration-form').on('submit', function(event) {
+                $(this).addClass('form-submit-animation');
             });
         });
     </script>
